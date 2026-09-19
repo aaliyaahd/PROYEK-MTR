@@ -85,13 +85,13 @@ body::after {
         radial-gradient(ellipse at 50% 100%, #2b7a4f 50%, transparent 52%) left 87% bottom 0 / 8% 45px no-repeat,
         radial-gradient(ellipse at 50% 100%, #1e5c3a 50%, transparent 52%) left 96% bottom 0 / 5% 30px no-repeat,
 
-        /* --- 2. PINTU (Fix: Kordinat digeser presisi ke tengah gedung) --- */
+        /* --- 2. PINTU (Fix: Dikembalikan ke tengah dinding) --- */
         linear-gradient(#3a1f0d, #251206) left 11% bottom 0 / 5% 35px no-repeat,
-        linear-gradient(#150a03, #0a0401) left 27% bottom 0 / 6% 40px no-repeat,
-        linear-gradient(#4d2b14, #2a1608) left 61.5% bottom 0 / 5% 35px no-repeat,
-        linear-gradient(#3a1f0d, #251206) left 84% bottom 0 / 5% 32px no-repeat,
+        linear-gradient(#150a03, #0a0401) left 29% bottom 0 / 6% 40px no-repeat,
+        linear-gradient(#4d2b14, #2a1608) left 68% bottom 0 / 5% 35px no-repeat,
+        linear-gradient(#3a1f0d, #251206) left 90.5% bottom 0 / 5% 32px no-repeat,
 
-        /* --- 3. ATAP BERUNDAK (Fix: Ditarik ke dalam agar tidak melayang) --- */
+        /* --- 3. ATAP BERUNDAK --- */
         linear-gradient(#295385, #295385) left 9% bottom 48% / 9% 4% no-repeat,
         linear-gradient(#152a42, #152a42) left 27% bottom 75% / 10% 4% no-repeat,
         linear-gradient(#1c3a5e, #1c3a5e) left 64% bottom 55% / 11% 5% no-repeat,
