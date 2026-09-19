@@ -75,7 +75,7 @@ body::after {
     height: 52%;
     z-index: 0;
     background:
-        /* --- 1. TANAMAN / SEMAK --- */
+        /* --- 1. TANAMAN / SEMAK (Paling Depan) --- */
         radial-gradient(ellipse at 50% 100%, #1e5c3a 50%, transparent 52%) left 2% bottom 0 / 5% 30px no-repeat,
         radial-gradient(ellipse at 50% 100%, #2b7a4f 50%, transparent 52%) left 7% bottom 0 / 7% 40px no-repeat,
         radial-gradient(ellipse at 50% 100%, #1e5c3a 50%, transparent 52%) left 16% bottom 0 / 5% 35px no-repeat,
@@ -85,11 +85,11 @@ body::after {
         radial-gradient(ellipse at 50% 100%, #2b7a4f 50%, transparent 52%) left 87% bottom 0 / 8% 45px no-repeat,
         radial-gradient(ellipse at 50% 100%, #1e5c3a 50%, transparent 52%) left 96% bottom 0 / 5% 30px no-repeat,
 
-        /* --- 2. PINTU --- */
-        linear-gradient(#3a1f0d, #3a1f0d) left 11% bottom 0 / 4% 30px no-repeat,
-        linear-gradient(#150a03, #150a03) left 30% bottom 0 / 5% 35px no-repeat,
-        linear-gradient(#4d2b14, #4d2b14) left 68% bottom 0 / 4% 30px no-repeat,
-        linear-gradient(#3a1f0d, #3a1f0d) left 91% bottom 0 / 4% 28px no-repeat,
+        /* --- 2. PINTU (Dibuat Lebih Besar & Menonjol) --- */
+        linear-gradient(#3a1f0d, #251206) left 10% bottom 0 / 5% 35px no-repeat,
+        linear-gradient(#150a03, #0a0401) left 29% bottom 0 / 6% 40px no-repeat,
+        linear-gradient(#4d2b14, #2a1608) left 68% bottom 0 / 5% 35px no-repeat,
+        linear-gradient(#3a1f0d, #251206) left 90% bottom 0 / 5% 32px no-repeat,
 
         /* --- 3. ATAP BERUNDAK --- */
         linear-gradient(#295385, #295385) left 9% bottom 48% / 9% 4% no-repeat,
@@ -97,28 +97,24 @@ body::after {
         linear-gradient(#1c3a5e, #1c3a5e) left 65% bottom 55% / 11% 5% no-repeat,
         linear-gradient(#2c5687, #2c5687) left 89% bottom 65% / 8% 4% no-repeat,
 
-        /* --- 4. JENDELA NATURAL (Fix: Kordinat ditarik ke dalam) --- */
-        /* Gedung 1 (Kuning Kiri) */
-        linear-gradient(rgba(255, 235, 120, .8), rgba(255, 235, 120, .8)) left 8% bottom 45px / 3% 15px no-repeat,
-        linear-gradient(rgba(255, 235, 120, .8), rgba(255, 235, 120, .8)) left 11% bottom 75px / 3% 15px no-repeat,
-        linear-gradient(rgba(255, 235, 120, .8), rgba(255, 235, 120, .8)) left 9% bottom 105px / 3% 15px no-repeat,
+        /* --- 4. DINDING GEDUNG (Menutupi cahaya untuk membentuk bingkai jendela) --- */
+        /* Gedung 1 */
+        repeating-linear-gradient(0deg, #305f96 0, #305f96 40px, transparent 40px, transparent 52px) left 7% bottom 0 / 13% 48% no-repeat,
+        repeating-linear-gradient(90deg, #305f96 0, #305f96 30px, transparent 30px, transparent 42px) left 7% bottom 0 / 13% 48% no-repeat,
         
-        /* Gedung 2 (Biru Tua) */
-        linear-gradient(rgba(255, 255, 255, .15), rgba(255, 255, 255, .15)) left 26% bottom 50px / 3% 18px no-repeat,
-        linear-gradient(rgba(255, 255, 255, .15), rgba(255, 255, 255, .15)) left 30% bottom 90px / 3% 18px no-repeat,
-        linear-gradient(rgba(255, 255, 255, .15), rgba(255, 255, 255, .15)) left 27% bottom 130px / 3% 18px no-repeat,
+        /* Gedung 2 */
+        repeating-linear-gradient(0deg, #3f74ad 0, #3f74ad 50px, transparent 50px, transparent 65px) left 25% bottom 0 / 14% 75% no-repeat,
+        repeating-linear-gradient(90deg, #3f74ad 0, #3f74ad 40px, transparent 40px, transparent 60px) left 25% bottom 0 / 14% 75% no-repeat,
         
-        /* Gedung 3 (Biru Muda) */
-        linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, .3)) left 64% bottom 60px / 3% 15px no-repeat,
-        linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, .3)) left 68% bottom 40px / 3% 15px no-repeat,
-        linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, .3)) left 65% bottom 100px / 3% 15px no-repeat,
-        linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, .3)) left 67% bottom 120px / 3% 15px no-repeat,
+        /* Gedung 3 */
+        repeating-linear-gradient(0deg, #234975 0, #234975 35px, transparent 35px, transparent 60px) left 63% bottom 0 / 15% 55% no-repeat,
+        repeating-linear-gradient(90deg, #234975 0, #234975 35px, transparent 35px, transparent 45px) left 63% bottom 0 / 15% 55% no-repeat,
         
-        /* Gedung 4 (Kuning Kanan) */
-        linear-gradient(rgba(255, 239, 132, .5), rgba(255, 239, 132, .5)) left 88% bottom 50px / 3% 18px no-repeat,
-        linear-gradient(rgba(255, 239, 132, .5), rgba(255, 239, 132, .5)) left 91% bottom 80px / 3% 18px no-repeat,
+        /* Gedung 4 */
+        repeating-linear-gradient(0deg, #3768a3 0, #3768a3 45px, transparent 45px, transparent 60px) left 87% bottom 0 / 12% 65% no-repeat,
+        repeating-linear-gradient(90deg, #3768a3 0, #3768a3 35px, transparent 35px, transparent 50px) left 87% bottom 0 / 12% 65% no-repeat,
 
-        /* --- 5. DINDING DASAR GEDUNG --- */
+        /* --- 5. CAHAYA JENDELA (Warna Dasar Paling Belakang) --- */
         linear-gradient(#ffe36a, #ffb400) left 7% bottom 0 / 13% 48% no-repeat,
         linear-gradient(#1a3454, #12253d) left 25% bottom 0 / 14% 75% no-repeat,
         linear-gradient(#6ef0ff, #2fb4ff) left 63% bottom 0 / 15% 55% no-repeat,
