@@ -33,7 +33,7 @@ var FEEDBACK_DELAY = 900; // jeda (ms) sebelum soal berikutnya muncul
 
 // Kalau CSS temanmu memakai nama class lain untuk balok tower,
 // cukup ganti satu baris ini.
-var BLOCK_CLASS = 'tower-block';
+var BLOCK_CLASS = 'block';
 
 // Parameter per level.
 // botMin/botMax = rentang waktu berpikir BOT (ms)

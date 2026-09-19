@@ -2,17 +2,17 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Tower Race</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Math Tower Race</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- LAYAR START -->
     <div id="start-screen" class="overlay">
         <div class="start-card">
             <h1>MATH TOWER RACE</h1>
@@ -21,75 +21,89 @@
         </div>
     </div>
 
+    <!-- MODAL MENANG / KALAH -->
     <div id="win-modal" class="overlay hidden">
-            <div class="start-card win-card" id="modal-card">
-                <h1 id="win-title">🎉 LEVEL PASSED! 🎉</h1>
-                <p id="win-subtitle">Komputer akan bergerak lebih cepat di level berikutnya!</p>
-                <button id="next-level-btn">LANJUT LEVEL 2 ➔</button>
-            </div>
+        <div class="start-card win-card" id="modal-card">
+            <h1 id="win-title">🎉 LEVEL PASSED! 🎉</h1>
+            <p id="win-subtitle">Komputer akan bergerak lebih cepat di level berikutnya!</p>
+            <button id="next-level-btn">LANJUT LEVEL 2 ➔</button>
+        </div>
+    </div>
+
+    <!-- DEKORASI LATAR -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div id="particles-container"></div>
+
+    <!-- GAME -->
+    <div class="game-container">
+        <div class="top-header">
+            <div class="level-badge" id="level-display">LEVEL 1/5</div>
+            <div class="title-banner">SOLVE THE PROBLEM TO RISE!</div>
+            <button id="music-btn">🎵 BGM: ON</button>
         </div>
 
-        <div class="cloud cloud1"></div>
-        <div class="cloud cloud2"></div>
-        <div id = "particles-container"></div>
-
-        <div class="game-container">
-            <div class="top-header">
-                <div class="level-badge" id="level-display">LEVEL 1/5</div>
-                <div class="title-banner">SOLVE THE PROBLEM TO RISE!</div>
-                <button id="music-btn">🎵 BGM: ON</button>
-            </div>
-
-            <div class="hud-bar">
-                <div class="hud-card p1-card">
-                    <h3>PLAYER 1</h3>
+        <div class="hud-bar">
+            <div class="hud-card p1-card">
+                <h3>PLAYER 1</h3>
+                <div class="hud-stats">
                     <p>SCORE: <span id="p1-score">0</span></p>
                     <p>TOWER HT: <span id="p1-ht">0</span>/15</p>
                     <p class="combo-text">COMBO: <span id="p1-combo">x1</span></p>
-                    <p>POWER: <span id="p1-power">[####] x3</span></p>
+                    <p>POWER: <span id="p1-power">[----] x1</span></p>
                 </div>
-                
-             <div class="question-container">
+            </div>
+
+            <div class="question-container">
                 <div id="powerup-badge" class="badge hidden">⚡ POWER-UP QUESTION! ⚡</div>
                 <div id="question-box">READY?</div>
                 <div class="turn-badge" id="turn-display">PLAYER 1's TURN</div>
                 <div class="input-group">
-                    <input type="number" id="answer-input" placeholder="Jawaban..." autocomplete="off" disabled>
+                    <input type="number" id="answer-input" placeholder="Jawaban..." autocomplete="off" inputmode="numeric" disabled>
                     <button id="submit-btn" disabled>Jawab [Enter]</button>
                 </div>
             </div>
 
             <div class="hud-card p2-card">
                 <h3>PLAYER 2 (BOT)</h3>
-                <p>SCORE: <span id="p2-score">0</span></p>
-                <p>TOWER HT: <span id="p2-ht">0</span>/15</p>
-                <p class="combo-text">COMBO: <span id="p2-combo">x1</span></p>
-                <P>POWER: <span id="p2-power">[##--] x1</span></P>
+                <div class="hud-stats">
+                    <p>SCORE: <span id="p2-score">0</span></p>
+                    <p>TOWER HT: <span id="p2-ht">0</span>/15</p>
+                    <p class="combo-text">COMBO: <span id="p2-combo">x1</span></p>
+                    <p>POWER: <span id="p2-power">[----] x1</span></p>
+                </div>
             </div>
         </div>
+
         <div class="game-play-area">
             <div class="tower-container" id="p1-container">
                 <div class="character-robot p1-robot" id="p1-robot">
-                    <span class="speech-bubble" id="p1-bubble">20</span>
-                    🤖
+                    <span class="speech-bubble" id="p1-bubble"></span>
+                    <span class="robot-emoji">🤖</span>
                 </div>
-                <div class="tower-stack p1-tower" id="p1-tower">
-                </div>
+                <div class="tower-stack p1-tower" id="p1-tower"></div>
             </div>
+
             <div class="center-effects">
-                <div class="combo-banner">
+                <div class="combo-banner" id="combo-banner">
                     <div class="mult-text">MULTIPLIER!</div>
                     <div class="combo-text">COMBO x5</div>
                 </div>
-            </div>   
+            </div>
+
             <div class="tower-container" id="p2-container">
                 <div class="character-robot p2-robot" id="p2-robot">
-                    <span class="speech-bubble" id="p2-bubble">18</span>
-                    🤖
+                    <span class="speech-bubble" id="p2-bubble"></span>
+                    <span class="robot-emoji">🤖</span>
                 </div>
-                <div class="tower-stack p2-tower" id="p2-tower">
-                </div>
+                <div class="tower-stack p2-tower" id="p2-tower"></div>
             </div>
+        </div>
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+</html>
 
 
             
