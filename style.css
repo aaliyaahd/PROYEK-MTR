@@ -46,171 +46,56 @@ body::after {
 }
 
 
+/* =========================
+   KOTA LATAR JAUH (Siluet Belakang)
+========================= */
 body::before {
-    height: 62%;
+    height: 60%;
     z-index: 0;
-    opacity: .65;
-
+    opacity: 0.85;
     background:
-        /* ===== GEDUNG ===== */
-
-        linear-gradient(#6f9bd0, #6f9bd0)
-            2% 100% / 7% 55% no-repeat,
-
-        linear-gradient(#789fd0, #789fd0)
-            10% 100% / 6% 80% no-repeat,
-
-        linear-gradient(#6f9bd0, #6f9bd0)
-            18% 100% / 8% 48% no-repeat,
-
-        linear-gradient(#789fd0, #789fd0)
-            40% 100% / 7% 70% no-repeat,
-
-        linear-gradient(#6f9bd0, #6f9bd0)
-            47% 100% / 5% 52% no-repeat,
-
-        linear-gradient(#789fd0, #789fd0)
-            56% 100% / 6% 62% no-repeat,
-
-        linear-gradient(#6f9bd0, #6f9bd0)
-            66% 100% / 8% 45% no-repeat,
-
-        linear-gradient(#789fd0, #789fd0)
-            78% 100% / 6% 75% no-repeat,
-
-        linear-gradient(#6f9bd0, #6f9bd0)
-            90% 100% / 8% 58% no-repeat,
-
-        /* ===== JENDELA ===== */
-
-        repeating-linear-gradient(
-            90deg,
-            transparent 0 18px,
-            rgba(255, 232, 120, .65) 18px 24px,
-            transparent 24px 38px
-        )
-        10% 100% / 6% 80% no-repeat,
-
-        repeating-linear-gradient(
-            90deg,
-            transparent 0 15px,
-            rgba(255, 232, 120, .6) 15px 21px,
-            transparent 21px 34px
-        )
-        40% 100% / 7% 70% no-repeat,
-
-        repeating-linear-gradient(
-            90deg,
-            transparent 0 14px,
-            rgba(255, 245, 150, .7) 14px 20px,
-            transparent 20px 30px
-        )
-        78% 100% / 6% 75% no-repeat;
+        /* Gedung 1 (Kiri) */
+        linear-gradient(#5a8ac4, #5a8ac4) 4% 100% / 8% 45% no-repeat,
+        /* Gedung 2 */
+        linear-gradient(#6c9bd4, #6c9bd4) 16% 100% / 9% 65% no-repeat,
+        /* Gedung 3 */
+        linear-gradient(#4d7bb5, #4d7bb5) 32% 100% / 11% 50% no-repeat,
+        /* Gedung 4 (Tengah Tinggi) */
+        linear-gradient(#5a8ac4, #5a8ac4) 50% 100% / 12% 75% no-repeat,
+        /* Gedung 5 */
+        linear-gradient(#6c9bd4, #6c9bd4) 74% 100% / 10% 55% no-repeat,
+        /* Gedung 6 (Kanan) */
+        linear-gradient(#4d7bb5, #4d7bb5) 92% 100% / 9% 40% no-repeat;
 }
-
 
 /* =========================
-   GEDUNG DEKAT
+   GEDUNG DEKAT (Jendela Kotak Pixel Art)
 ========================= */
-
 body::after {
-    height: 46%;
+    height: 52%;
     z-index: 0;
-
     background:
+        /* --- GEDUNG 1 (Kiri - Jendela Kuning Menyala) --- */
+        /* Tembok Horizontal */ repeating-linear-gradient(0deg, #305f96 0, #305f96 6px, transparent 6px, transparent 20px) 7% 100% / 13% 48% no-repeat,
+        /* Tembok Vertikal */   repeating-linear-gradient(90deg, #305f96 0, #305f96 6px, transparent 6px, transparent 16px) 7% 100% / 13% 48% no-repeat,
+        /* Warna Jendela */     linear-gradient(#ffe36a, #ffb400) 7% 100% / 13% 48% no-repeat,
 
-        /* ===== GEDUNG ===== */
+        /* --- GEDUNG 2 (Kiri Tengah - Jendela Gelap) --- */
+        repeating-linear-gradient(0deg, #3f74ad 0, #3f74ad 6px, transparent 6px, transparent 24px) 25% 100% / 14% 75% no-repeat,
+        repeating-linear-gradient(90deg, #3f74ad 0, #3f74ad 6px, transparent 6px, transparent 18px) 25% 100% / 14% 75% no-repeat,
+        linear-gradient(#1a3454, #12253d) 25% 100% / 14% 75% no-repeat,
 
-        linear-gradient(
-            #c2dcf5 0 4%,
-            #638fc2 4%
-        )
-        0% 100% / 12% 62% no-repeat,
+        /* --- GEDUNG 3 (Kanan Tengah - Jendela Lebar Biru Muda) --- */
+        repeating-linear-gradient(0deg, #234975 0, #234975 8px, transparent 8px, transparent 28px) 63% 100% / 15% 55% no-repeat,
+        repeating-linear-gradient(90deg, #234975 0, #234975 8px, transparent 8px, transparent 24px) 63% 100% / 15% 55% no-repeat,
+        linear-gradient(#6ef0ff, #2fb4ff) 63% 100% / 15% 55% no-repeat,
 
-        linear-gradient(
-            #c2dcf5 0 4%,
-            #527fb4 4%
-        )
-        13% 100% / 9% 42% no-repeat,
-
-        linear-gradient(
-            #c2dcf5 0 4%,
-            #638fc2 4%
-        )
-        34% 100% / 8% 30% no-repeat,
-
-        linear-gradient(
-            #c2dcf5 0 4%,
-            #527fb4 4%
-        )
-        44% 100% / 10% 56% no-repeat,
-
-        linear-gradient(
-            #c2dcf5 0 4%,
-            #638fc2 4%
-        )
-        55% 100% / 8% 38% no-repeat,
-
-        linear-gradient(
-            #c2dcf5 0 4%,
-            #527fb4 4%
-        )
-        66% 100% / 10% 66% no-repeat,
-
-        linear-gradient(
-            #c2dcf5 0 4%,
-            #638fc2 4%
-        )
-        80% 100% / 8% 34% no-repeat,
-
-        linear-gradient(
-            #c2dcf5 0 4%,
-            #527fb4 4%
-        )
-        89% 100% / 11% 60% no-repeat,
-
-        /* ===== JENDELA GEDUNG ===== */
-
-        repeating-linear-gradient(
-            90deg,
-            transparent 0 10px,
-            rgba(255, 239, 132, .9) 10px 17px,
-            transparent 17px 25px
-        )
-        0% 100% / 12% 62% no-repeat,
-
-        repeating-linear-gradient(
-            90deg,
-            transparent 0 11px,
-            rgba(255, 239, 132, .8) 11px 18px,
-            transparent 18px 27px
-        )
-        13% 100% / 9% 42% no-repeat,
-
-        repeating-linear-gradient(
-            90deg,
-            transparent 0 10px,
-            rgba(255, 245, 150, .85) 10px 17px,
-            transparent 17px 25px
-        )
-        44% 100% / 10% 56% no-repeat,
-
-        repeating-linear-gradient(
-            90deg,
-            transparent 0 11px,
-            rgba(255, 239, 132, .85) 11px 18px,
-            transparent 18px 28px
-        )
-        66% 100% / 10% 66% no-repeat,
-
-        repeating-linear-gradient(
-            90deg,
-            transparent 0 10px,
-            rgba(255, 239, 132, .8) 10px 17px,
-            transparent 17px 26px
-        )
-        89% 100% / 11% 60% no-repeat;
+        /* --- GEDUNG 4 (Kanan - Tinggi, Jendela Kuning Redup) --- */
+        repeating-linear-gradient(0deg, #3768a3 0, #3768a3 5px, transparent 5px, transparent 20px) 87% 100% / 12% 65% no-repeat,
+        repeating-linear-gradient(90deg, #3768a3 0, #3768a3 5px, transparent 5px, transparent 16px) 87% 100% / 12% 65% no-repeat,
+        linear-gradient(#d6c058, #b8a033) 87% 100% / 12% 65% no-repeat;
 }
+
 /* ===== Glow lampu kota ===== */
 
 body {
