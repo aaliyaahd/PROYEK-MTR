@@ -33,46 +33,218 @@ body {
 input { user-select: text; -webkit-user-select: text; }
 .hidden { display: none !important; }
 
-/* ===== Kota latar (dua lapis) ===== */
+/* ===== Kota latar (lebih detail + jendela) ===== */
+
 body::before,
 body::after {
     content: "";
     position: fixed;
-    left: 0; right: 0; bottom: var(--ground);
+    left: 0;
+    right: 0;
+    bottom: var(--ground);
     pointer-events: none;
 }
 
-/* gedung jauh */
+
 body::before {
     height: 62%;
     z-index: 0;
-    opacity: .55;
+    opacity: .65;
+
     background:
-        linear-gradient(#7fa8d8, #7fa8d8) 2% 100% / 7% 55% no-repeat,
-        linear-gradient(#7fa8d8, #7fa8d8) 10% 100% / 6% 80% no-repeat,
-        linear-gradient(#7fa8d8, #7fa8d8) 18% 100% / 8% 48% no-repeat,
-        linear-gradient(#7fa8d8, #7fa8d8) 40% 100% / 7% 70% no-repeat,
-        linear-gradient(#7fa8d8, #7fa8d8) 47% 100% / 5% 52% no-repeat,
-        linear-gradient(#7fa8d8, #7fa8d8) 56% 100% / 6% 62% no-repeat,
-        linear-gradient(#7fa8d8, #7fa8d8) 66% 100% / 8% 45% no-repeat,
-        linear-gradient(#7fa8d8, #7fa8d8) 78% 100% / 6% 75% no-repeat,
-        linear-gradient(#7fa8d8, #7fa8d8) 90% 100% / 8% 58% no-repeat;
+        /* ===== GEDUNG ===== */
+
+        linear-gradient(#6f9bd0, #6f9bd0)
+            2% 100% / 7% 55% no-repeat,
+
+        linear-gradient(#789fd0, #789fd0)
+            10% 100% / 6% 80% no-repeat,
+
+        linear-gradient(#6f9bd0, #6f9bd0)
+            18% 100% / 8% 48% no-repeat,
+
+        linear-gradient(#789fd0, #789fd0)
+            40% 100% / 7% 70% no-repeat,
+
+        linear-gradient(#6f9bd0, #6f9bd0)
+            47% 100% / 5% 52% no-repeat,
+
+        linear-gradient(#789fd0, #789fd0)
+            56% 100% / 6% 62% no-repeat,
+
+        linear-gradient(#6f9bd0, #6f9bd0)
+            66% 100% / 8% 45% no-repeat,
+
+        linear-gradient(#789fd0, #789fd0)
+            78% 100% / 6% 75% no-repeat,
+
+        linear-gradient(#6f9bd0, #6f9bd0)
+            90% 100% / 8% 58% no-repeat,
+
+        /* ===== JENDELA ===== */
+
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 18px,
+            rgba(255, 232, 120, .65) 18px 24px,
+            transparent 24px 38px
+        )
+        10% 100% / 6% 80% no-repeat,
+
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 15px,
+            rgba(255, 232, 120, .6) 15px 21px,
+            transparent 21px 34px
+        )
+        40% 100% / 7% 70% no-repeat,
+
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 14px,
+            rgba(255, 245, 150, .7) 14px 20px,
+            transparent 20px 30px
+        )
+        78% 100% / 6% 75% no-repeat;
 }
 
-/* gedung dekat (atap lebih terang) */
+
+/* =========================
+   GEDUNG DEKAT
+========================= */
+
 body::after {
     height: 46%;
     z-index: 0;
+
     background:
-        linear-gradient(#b4d3f0 0 4%, #6f9bcb 4%) 0% 100% / 12% 62% no-repeat,
-        linear-gradient(#b4d3f0 0 4%, #5f8dbf 4%) 13% 100% / 9% 42% no-repeat,
-        linear-gradient(#b4d3f0 0 4%, #6f9bcb 4%) 34% 100% / 8% 30% no-repeat,
-        linear-gradient(#b4d3f0 0 4%, #5f8dbf 4%) 44% 100% / 10% 56% no-repeat,
-        linear-gradient(#b4d3f0 0 4%, #6f9bcb 4%) 55% 100% / 8% 38% no-repeat,
-        linear-gradient(#b4d3f0 0 4%, #5f8dbf 4%) 66% 100% / 10% 66% no-repeat,
-        linear-gradient(#b4d3f0 0 4%, #6f9bcb 4%) 80% 100% / 8% 34% no-repeat,
-        linear-gradient(#b4d3f0 0 4%, #5f8dbf 4%) 89% 100% / 11% 60% no-repeat;
+
+        /* ===== GEDUNG ===== */
+
+        linear-gradient(
+            #c2dcf5 0 4%,
+            #638fc2 4%
+        )
+        0% 100% / 12% 62% no-repeat,
+
+        linear-gradient(
+            #c2dcf5 0 4%,
+            #527fb4 4%
+        )
+        13% 100% / 9% 42% no-repeat,
+
+        linear-gradient(
+            #c2dcf5 0 4%,
+            #638fc2 4%
+        )
+        34% 100% / 8% 30% no-repeat,
+
+        linear-gradient(
+            #c2dcf5 0 4%,
+            #527fb4 4%
+        )
+        44% 100% / 10% 56% no-repeat,
+
+        linear-gradient(
+            #c2dcf5 0 4%,
+            #638fc2 4%
+        )
+        55% 100% / 8% 38% no-repeat,
+
+        linear-gradient(
+            #c2dcf5 0 4%,
+            #527fb4 4%
+        )
+        66% 100% / 10% 66% no-repeat,
+
+        linear-gradient(
+            #c2dcf5 0 4%,
+            #638fc2 4%
+        )
+        80% 100% / 8% 34% no-repeat,
+
+        linear-gradient(
+            #c2dcf5 0 4%,
+            #527fb4 4%
+        )
+        89% 100% / 11% 60% no-repeat,
+
+        /* ===== JENDELA GEDUNG ===== */
+
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 10px,
+            rgba(255, 239, 132, .9) 10px 17px,
+            transparent 17px 25px
+        )
+        0% 100% / 12% 62% no-repeat,
+
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 11px,
+            rgba(255, 239, 132, .8) 11px 18px,
+            transparent 18px 27px
+        )
+        13% 100% / 9% 42% no-repeat,
+
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 10px,
+            rgba(255, 245, 150, .85) 10px 17px,
+            transparent 17px 25px
+        )
+        44% 100% / 10% 56% no-repeat,
+
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 11px,
+            rgba(255, 239, 132, .85) 11px 18px,
+            transparent 18px 28px
+        )
+        66% 100% / 10% 66% no-repeat,
+
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 10px,
+            rgba(255, 239, 132, .8) 10px 17px,
+            transparent 17px 26px
+        )
+        89% 100% / 11% 60% no-repeat;
 }
+/* ===== Glow lampu kota ===== */
+
+body {
+    background:
+        radial-gradient(
+            circle at 50% 65%,
+            rgba(255, 235, 120, .18),
+            transparent 32%
+        ),
+        linear-gradient(
+            180deg,
+            #1f8fff 0%,
+            #4fb2ff 50%,
+            #a9e1ff 100%
+        );
+}
+
+/* ===== Cahaya kota ===== */
+
+body {
+    background:
+        radial-gradient(
+            circle at 50% 65%,
+            rgba(255, 235, 120, .18),
+            transparent 32%
+        ),
+        linear-gradient(
+            180deg,
+            #1f8fff 0%,
+            #4fb2ff 50%,
+            #a9e1ff 100%
+        );
+}
+
 
 /* ===== Awan ===== */
 .cloud {
