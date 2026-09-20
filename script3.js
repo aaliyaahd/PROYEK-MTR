@@ -119,8 +119,8 @@ function cacheElements() {
    ======================================================================= */
 
 var state = {
-  level: 1,             // tingkat kesulitan saat ini (1-5), naik/turun tiap jawaban
-  peakLevel: 1,         // level tertinggi yang pernah dicapai dalam balapan ini
+  level: 1,             // level kampanye saat ini (1-5); HANYA berubah di akhir race (menang/kalah)
+  raceWinner: null,     // 'p1' atau 'p2' - pemenang race terakhir, dipakai saat pindah level
   running: false,       // true hanya saat gameplay berlangsung
   question: null,       // { text, answer } soal Player 1 saat ini
   answered: true,       // true = soal sekarang sudah dijawab (anti double submit)
@@ -563,27 +563,16 @@ function isPowerReady(p) {
   return p.power >= POWER_MAX;
 }
 
-/* --- SISTEM LEVEL NAIK/TURUN (baru) -------------------------------------
-   Level bergerak TEPAT satu langkah setiap Player 1 menjawab:
-     benar          -> +1, tidak pernah lebih dari MAX_LEVEL
-     salah / timeout -> -1, tidak pernah kurang dari 1
-   Dipanggil SEBELUM soal berikutnya dibuat, sehingga soal, timer,
-   dan konfigurasi BOT otomatis memakai level yang baru.
-   Jawaban BOT tidak mengubah level; level mengikuti performa Player 1.
+/* --- LEVEL SEKARANG BERBASIS RONDE (race) -------------------------------
+   state.level TIDAK lagi berubah tiap jawaban. Ia hanya berubah di ANTARA
+   dua race: setiap race adalah adu cepat sampai 15 balok pada satu level.
+   Soal dan konfigurasi BOT sepanjang SATU race memakai level yang sama
+   (makeQuestion(state.level) & LEVEL_CONFIG[state.level] membaca level
+   yang sama sampai race berikutnya dimulai lewat startLevel()).
+   Keputusan naik/turun level dibuat di endLevel() + handleNextLevel():
+     menang race -> level + 1 (maksimal MAX_LEVEL)
+     kalah race  -> level - 1 (minimal 1)
 ------------------------------------------------------------------------ */
-function changeLevel(delta) {
-  var sebelum = state.level;
-  var sesudah = Math.min(Math.max(sebelum + delta, 1), MAX_LEVEL);
-
-  state.level = sesudah;
-  if (sesudah > state.peakLevel) state.peakLevel = sesudah;
-
-  if (sesudah !== sebelum) {
-    applyLevelBackground(sesudah);  // class .level-n di <body>
-    renderLevel();                  // #level-display langsung diperbarui
-  }
-  return sesudah;
-}
 
 /* --- SISTEM STREAK (baru) ------------------------------------------------
    Streak = jumlah jawaban benar BERTURUT-TURUT milik Player 1.
@@ -665,8 +654,8 @@ function handleWrong(who) {
 function nextQuestion() {
   if (!state.running) return;
 
-  // makeQuestion memakai state.level yang sudah diperbarui oleh changeLevel(),
-  // jadi tingkat kesulitan soal selalu mengikuti level yang sedang aktif.
+  // makeQuestion memakai state.level, yang tetap sama sepanjang satu race
+  // dan hanya berubah di antara dua race lewat startLevel().
   state.question = makeQuestion(state.level);
   state.answered = false;
 
@@ -740,7 +729,7 @@ function submitAnswer() {
   if (value === state.question.answer) {
     var gained = handleCorrect('p1');   // skor, balok normal, combo, power
     var dapatBonus = addStreak();       // streak: bisa menambah balok bonus
-    changeLevel(+1);                    // naik 1 level (maksimal 5)
+    // Level TIDAK berubah di sini lagi - level hanya berubah di akhir race.
 
     if (dapatBonus) {
       setText(el.questionBox,
@@ -754,7 +743,7 @@ function submitAnswer() {
   } else {
     handleWrong('p1');                  // combo reset, power hangus
     resetStreak();                      // streak kembali ke 0
-    changeLevel(-1);                    // turun 1 level (minimal 1)
+    // Level TIDAK berubah di sini lagi - level hanya berubah di akhir race.
 
     setText(el.questionBox, '\u274C SALAH! Jawaban: ' + state.question.answer);
     flashQuestionBox('bad');
@@ -830,7 +819,7 @@ function timeUp() {
   lockInput();
   handleWrong('p1');
   resetStreak();       // streak hilang
-  changeLevel(-1);     // waktu habis diperlakukan sama seperti salah
+  // Level TIDAK berubah di sini lagi - level hanya berubah di akhir race.
 
   setText(el.questionBox, '\u23F0 WAKTU HABIS! Jawaban: ' + state.question.answer);
   flashQuestionBox('bad');
@@ -864,29 +853,48 @@ function endLevel(winner) {
   hideBanner();
   flashQuestionBox(null);
 
-  // Modal sekarang menandai akhir balapan (bukan pindah level),
-  // karena level sudah berpindah sendiri di tengah permainan.
+  // Catat siapa yang menang race ini - dipakai handleNextLevel()
+  // untuk menentukan level race berikutnya.
+  state.raceWinner = winner;
+
   if (winner === 'p1') {
     soundWin();
     if (el.p1Robot) burst(el.p1Robot, '\uD83C\uDF89', 14);
     if (el.modalCard) el.modalCard.classList.remove('lose');
 
-    setText(el.winTitle, '\uD83C\uDFC6 KAMU MENANG! \uD83C\uDFC6');
-    setText(el.winSubtitle,
-      'Menaramu sampai ' + TARGET_BLOCKS + ' balok duluan! Skor: ' + state.p1.score +
-      ' (BOT: ' + state.p2.score + ') \u00B7 Level tertinggi: ' +
-      state.peakLevel + '/' + MAX_LEVEL);
+    if (state.level >= MAX_LEVEL) {
+      // Level 5 dimenangkan -> game tamat, tidak ada Level 6.
+      setText(el.winTitle, '\uD83C\uDFC6 GAME COMPLETE! \uD83C\uDFC6');
+      setText(el.winSubtitle,
+        'Kamu menyelesaikan seluruh 5 level! Skor akhir: ' + state.p1.score +
+        ' (BOT: ' + state.p2.score + ')');
+      setText(el.nextLevelBtn, 'MAIN LAGI DARI LEVEL 1 \uD83D\uDD04');
+    } else {
+      setText(el.winTitle, '\uD83C\uDF89 LEVEL PASSED! \uD83C\uDF89');
+      setText(el.winSubtitle,
+        'Skor: ' + state.p1.score + ' \u00B7 Lanjut ke Level ' + (state.level + 1) +
+        ', soal akan lebih menantang!');
+      setText(el.nextLevelBtn, 'LANJUT LEVEL ' + (state.level + 1) + ' \u279C');
+    }
   } else {
     soundWrong();
     if (el.modalCard) el.modalCard.classList.add('lose');  // border merah dari CSS
 
-    setText(el.winTitle, '\uD83D\uDE35 KALAH!');
-    setText(el.winSubtitle,
-      'Menara BOT sampai ' + TARGET_BLOCKS + ' duluan. Skormu: ' + state.p1.score +
-      ' \u00B7 Level tertinggi: ' + state.peakLevel + '/' + MAX_LEVEL);
+    var turunKe = Math.max(state.level - 1, 1);
+    setText(el.winTitle, '\uD83D\uDE35 LEVEL GAGAL!');
+    if (turunKe === state.level) {
+      // Sudah di Level 1, tidak ada Level 0 untuk dituju.
+      setText(el.winSubtitle,
+        'Menara BOT sampai 15 duluan. Coba lagi di Level 1. Skormu: ' + state.p1.score);
+      setText(el.nextLevelBtn, 'ULANGI LEVEL 1 \uD83D\uDD04');
+    } else {
+      setText(el.winSubtitle,
+        'Menara BOT sampai 15 duluan. Level turun ke Level ' + turunKe +
+        '. Skormu: ' + state.p1.score);
+      setText(el.nextLevelBtn, 'TURUN KE LEVEL ' + turunKe + ' \uD83D\uDD04');
+    }
   }
 
-  setText(el.nextLevelBtn, 'MAIN LAGI \uD83D\uDD04');
   showEl(el.winModal);
 }
 
@@ -896,7 +904,6 @@ function startLevel(level) {
   clearAllTimers();
 
   state.level = Math.min(Math.max(level, 1), MAX_LEVEL);
-  state.peakLevel = state.level;
   state.running = true;
   state.answered = true;
   state.question = null;
@@ -926,14 +933,24 @@ function startLevel(level) {
   scheduleBot();
 }
 
-// Tombol di modal: mulai balapan baru dari Level 1.
-// (Dulu tombol ini memindahkan level. Sekarang level sudah berpindah
-//  sendiri saat bermain, jadi tombolnya berfungsi sebagai restart.)
+// Tombol di modal: menentukan level RACE BERIKUTNYA.
+//   Menang race ini -> naik 1 level (atau reset total kalau baru menang Level 5).
+//   Kalah race ini  -> turun 1 level (minimal Level 1).
 function handleNextLevel() {
   hideEl(el.winModal);
-  state.p1 = newPlayerState();
-  state.p2 = newPlayerState();
-  startLevel(1);
+
+  if (state.raceWinner === 'p1') {
+    if (state.level >= MAX_LEVEL) {
+      // Game tamat -> mulai kampanye baru dari nol.
+      state.p1 = newPlayerState();
+      state.p2 = newPlayerState();
+      startLevel(1);
+      return;
+    }
+    startLevel(state.level + 1);
+  } else {
+    startLevel(Math.max(state.level - 1, 1));
+  }
 }
 
 /* =======================================================================
