@@ -1,15 +1,12 @@
 /*
  * KONFIGURASI FIREBASE UNTUK MATH TOWER RACE
- * 1. Buka Firebase Console > Project settings > General > Your apps > SDK setup.
- * 2. Salin nilai config aplikasi web ke bawah ini.
- * 3. Jangan masukkan password atau service-account private key di file ini.
  */
 window.MTR_FIREBASE_CONFIG = {
-  apiKey: 'ISI_API_KEY_DARI_FIREBASE',
-  authDomain: 'ISI_PROJECT_ID.firebaseapp.com',
-  databaseURL: 'ISI_DATABASE_URL_DARI_REALTIME_DATABASE',
-  projectId: 'ISI_PROJECT_ID',
-  storageBucket: 'ISI_STORAGE_BUCKET',
-  messagingSenderId: 'ISI_MESSAGING_SENDER_ID',
-  appId: 'ISI_APP_ID'
+  apiKey: 'API_KEY_ASLI_DARI_FIREBASE',
+  authDomain: 'math-tower-race-75d16.firebaseapp.com',
+  databaseURL: 'https://math-tower-race-75d16-default-rtdb.asia-southeast1.firebasedatabase.app',
+  projectId: 'math-tower-race-75d16',
+  storageBucket: 'math-tower-race-75d16.firebasestorage.app',
+  messagingSenderId: '380480209066',
+  appId: '1:380480209066:web:bd5627d0fcd405db6210d3'
 };

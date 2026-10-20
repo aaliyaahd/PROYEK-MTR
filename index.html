@@ -21,7 +21,7 @@
             <div class="rules-list">
                 <p>🏁 <b>Tujuan:</b> jadilah yang pertama mencapai Level 5.</p>
                 <p>📈 <b>Level makin tinggi, soal makin sulit</b> dan lawan makin cepat.</p>
-                <p>🔁 Jika kalah, kamu turun ke level sebelumnya. Minimal Level 1.</p>
+                <p>🔁 Jika kalah, kamu turun ke level sebelumnya.</p>
                 <p>🧱 Jawab benar 3 kali berturut-turut untuk mendapat 1 balok bonus.</p>
                 <p>📊 Level kamu dan lawan ditampilkan di layar selama permainan.</p>
                 <p>🏆 Dalam setiap level, pemain yang lebih dulu menyusun 15 balok menang.</p>
@@ -40,7 +40,7 @@
                     <button id="join-room-btn">GABUNG</button>
                 </div>
                 <p id="room-message" class="room-message"></p>
-                <p class="room-note">Room tersambung lewat Firebase. Pastikan teman memakai kode yang sama. Sinkronisasi gameplay penuh perlu tahap integrasi berikutnya.</p>
+                <p class="room-note">Catatan: kode room ini belum menghubungkan pemain lintas perangkat. Untuk multiplayer online sungguhan perlu backend/realtime database.</p>
             </div>
         </div>
     </div>
@@ -124,11 +124,6 @@
         </div>
     </div>
 
-    <!-- Firebase compat SDK agar tetap cocok dengan script.js vanilla -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
-    <script src="firebase-config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
