@@ -15,10 +15,33 @@
 <body>
     <!-- LAYAR START -->
     <div id="start-screen" class="overlay">
-        <div class="start-card">
+        <div class="start-card rules-card">
             <h1>MATH TOWER RACE</h1>
-            <p>Jawab cepat, tumpuk menaramu sampai puncak 15 balok!</p>
-            <button id="start-btn">PRESS START 🎮</button>
+            <p>Jawab soal secepat mungkin dan capai Level 5 untuk menang!</p>
+            <div class="rules-list">
+                <p>🏁 <b>Tujuan:</b> jadilah yang pertama mencapai Level 5.</p>
+                <p>📈 <b>Level makin tinggi, soal makin sulit</b> dan lawan makin cepat.</p>
+                <p>🔁 Jika kalah, kamu turun ke level sebelumnya. Minimal Level 1.</p>
+                <p>🧱 Jawab benar 3 kali berturut-turut untuk mendapat 1 balok bonus.</p>
+                <p>📊 Level kamu dan lawan ditampilkan di layar selama permainan.</p>
+                <p>🏆 Dalam setiap level, pemain yang lebih dulu menyusun 15 balok menang.</p>
+            </div>
+            <h2 class="mode-heading">PILIH MODE PERMAINAN</h2>
+            <div class="mode-buttons">
+                <button id="start-btn">HUMAN VS BOT 🤖</button>
+                <button id="human-mode-btn" class="secondary-mode-btn">HUMAN VS HUMAN 👥</button>
+            </div>
+            <div id="room-panel" class="room-panel hidden">
+                <p><b>Human vs Human</b></p>
+                <p class="room-note">Buat kode room untuk dibagikan ke teman, atau masukkan kode teman.</p>
+                <button id="create-room-btn">BUAT KODE ROOM</button>
+                <div class="room-code-row">
+                    <input id="room-code-input" type="text" maxlength="6" placeholder="KODE ROOM" autocomplete="off">
+                    <button id="join-room-btn">GABUNG</button>
+                </div>
+                <p id="room-message" class="room-message"></p>
+                <p class="room-note">Room tersambung lewat Firebase. Pastikan teman memakai kode yang sama. Sinkronisasi gameplay penuh perlu tahap integrasi berikutnya.</p>
+            </div>
         </div>
     </div>
 
@@ -51,12 +74,11 @@
                     <p>SCORE: <span id="p1-score">0</span></p>
                     <p>TOWER HT: <span id="p1-ht">0</span>/15</p>
                     <p class="combo-text">COMBO: <span id="p1-combo">x1</span></p>
-                    <p>POWER: <span id="p1-power">[----] x1</span></p>
+                    <p>LEVEL: <span id="p1-level">1/5</span></p>
                 </div>
             </div>
 
             <div class="question-container">
-                <div id="powerup-badge" class="badge hidden">⚡ POWER-UP QUESTION! ⚡</div>
                 <div id="question-box">READY?</div>
                 <div class="turn-badge" id="turn-display">PLAYER 1's TURN</div>
                 <div class="input-group">
@@ -66,12 +88,12 @@
             </div>
 
             <div class="hud-card p2-card">
-                <h3>PLAYER 2 (BOT)</h3>
+                <h3 id="p2-name">PLAYER 2 (BOT)</h3>
                 <div class="hud-stats">
                     <p>SCORE: <span id="p2-score">0</span></p>
                     <p>TOWER HT: <span id="p2-ht">0</span>/15</p>
                     <p class="combo-text">COMBO: <span id="p2-combo">x1</span></p>
-                    <p>POWER: <span id="p2-power">[----] x1</span></p>
+                    <p>LEVEL: <span id="p2-level">1/5</span></p>
                 </div>
             </div>
         </div>
@@ -102,6 +124,11 @@
         </div>
     </div>
 
+    <!-- Firebase compat SDK agar tetap cocok dengan script.js vanilla -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
