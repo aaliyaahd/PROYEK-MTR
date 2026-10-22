@@ -1,11 +1,6 @@
 {
   "rules": {
-    "rooms": {
-      "$roomCode": {
-        ".read": "auth != null",
-        ".write": "auth != null",
-        ".validate": "newData.hasChildren(['createdAt', 'status', 'players'])"
-      }
-    }
+    ".read": true,
+    ".write": true
   }
 }

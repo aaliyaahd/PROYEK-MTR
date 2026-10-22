@@ -1,5 +1,5 @@
 window.MTR_FIREBASE_CONFIG = {
-  apiKey: "AIzaSyBxxxxxx-xxxxxxxxxxxxxxxx", // Ini adalah contoh, gunakan milikmu sendiri
+  apiKey: "AIzaSyBxxxxxx-xxxxxxxxxxxxxxxx",
   authDomain: "math-tower-race-75d16.firebaseapp.com",
   databaseURL: "https://math-tower-race-75d16-default-rtdb.asia-southeast1.firebasedatabase.app/",
   projectId: "math-tower-race-75d16",
