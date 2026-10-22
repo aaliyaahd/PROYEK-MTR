@@ -1,12 +1,9 @@
-/*
- * KONFIGURASI FIREBASE UNTUK MATH TOWER RACE
- */
 window.MTR_FIREBASE_CONFIG = {
-  apiKey: 'API_KEY_ASLI_DARI_FIREBASE',
-  authDomain: 'math-tower-race-75d16.firebaseapp.com',
-  databaseURL: 'https://math-tower-race-75d16-default-rtdb.asia-southeast1.firebasedatabase.app',
-  projectId: 'math-tower-race-75d16',
-  storageBucket: 'math-tower-race-75d16.firebasestorage.app',
-  messagingSenderId: '380480209066',
-  appId: '1:380480209066:web:bd5627d0fcd405db6210d3'
+  apiKey: "AIzaSyBxxxxxx-xxxxxxxxxxxxxxxx", // Ini adalah contoh, gunakan milikmu sendiri
+  authDomain: "math-tower-12345.firebaseapp.com",
+  databaseURL: "https://math-tower-12345-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "math-tower-12345",
+  storageBucket: "math-tower-12345.appspot.com",
+  messagingSenderId: "123456789012",
+  appId: "1:123456789012:web:abcdef1234567890"
 };
